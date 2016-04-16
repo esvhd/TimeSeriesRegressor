@@ -235,7 +235,10 @@ def cascade_cv(n, n_folds, data_size=.8, test_size=.15, number=False):
         end = min(start + int(data_size * n), n)
 
         if test_size <= 1 and not number:
-            ntrn = int(n * (1 - test_size))
+            # line below from master branch but seem to be breaking the code
+            # filed issue on github.
+            # ntrn = int(n * (1 - test_size))
+            ntrn = int((end - start) * (1 - test_size))
         elif test_size > 1 and number:
             ntrn = int(n * data_size - test_size)
         else:
