@@ -19,8 +19,9 @@ class TimeSeriesEstimator(BaseEstimator):
 
     def set_params(self, **params):
         # for param, value in params.iteritems():
-        for param in params.keys():
-            value = params.get(param)
+        # for param in params.keys():
+            # value = params.get(param)
+        for param, value in params.items():
             if param in self.get_params():
                 super(TimeSeriesEstimator, self).set_params(**{param: value})
             else:
@@ -40,8 +41,8 @@ class TimeSeriesEstimator(BaseEstimator):
         is_pandas = isinstance(dataX, pd.DataFrame)
 
         if dataY is not None:
-            # assert (type(dataX) is type(dataY)) TODO find way to still
-            # perform this check
+            # assert (type(dataX) is type(dataY))
+            # TODO find way to still perform this check
             assert (len(dataX) == len(dataY))
 
         dlistX, dlistY = [], []
